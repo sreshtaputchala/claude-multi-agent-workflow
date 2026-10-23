@@ -1,0 +1,17 @@
+{
+  "name": "sreshta-plugins",
+  "owner": {
+    "name": "sreshtaputchala"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by sreshtaputchala."
+  },
+  "plugins": [
+    {
+      "name": "code-quality",
+      "source": "./",
+      "description": "Audit a codebase with parallel reviewers and a test writer, plus an endpoint checklist skill and a lint-on-edit hook.",
+      "category": "development"
+    }
+  ]
+}

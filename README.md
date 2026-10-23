@@ -2,7 +2,7 @@
 
 A Claude Code plugin that runs a code-quality workflow on a codebase. A read-only reviewer and a test-writing agent work together under one command, with an endpoint-checklist skill and a lint-on-edit hook alongside them.
 
-> **Status:** v0.1.0. All components are in place; local testing and the marketplace listing are next.
+> **Status:** v0.1.0. Published through this repo's marketplace (`sreshta-plugins`).
 
 ## Components
 
@@ -37,14 +37,22 @@ claude --plugin-dir .
 
 After editing plugin files, run `/reload-plugins` in the session to pick up the changes.
 
-## Install from the marketplace
+## Install
 
-This repo will also be the plugin's marketplace (`.claude-plugin/marketplace.json`, added in a later step). When it's ready:
+This repo is also the plugin's marketplace, `sreshta-plugins` (see `.claude-plugin/marketplace.json`). In any Claude Code session:
 
 ```
 /plugin marketplace add sreshtaputchala/claude-multi-agent-workflow
-/plugin install code-quality@<marketplace-name>
+/plugin install code-quality@sreshta-plugins
 ```
+
+Restart Claude Code (or run `/reload-plugins`), then check:
+
+- `/agents` lists `code-quality:code-reviewer` and `code-quality:test-writer`
+- `/hooks` lists the `PostToolUse` lint hook
+- `/code-quality:audit [path]` runs the workflow
+
+To update later, run `/plugin marketplace update sreshta-plugins`.
 
 ## Versioning
 
