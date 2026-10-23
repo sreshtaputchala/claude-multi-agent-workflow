@@ -18,7 +18,7 @@ If you get neither, find the source file with the fewest tests and cover it.
 ## What to do
 
 1. **Learn how this project tests.** Read `package.json` to find the test command and framework, and `CLAUDE.md` if it exists. Open the existing test files and copy their patterns: imports, setup/teardown (for example a `beforeEach` that resets data), naming, assertion style. Don't add a new test library.
-2. **Read the code under test** so every assertion is based on what the code actually does, not on guesses.
+2. **Read the code under test** to understand how it works. Base every assertion on what the code is *supposed* to do: the behaviour you were given, the API docs, and the project's conventions (e.g. "400 on bad input"). Never write a test that locks in behaviour your input calls a bug. Asserting today's wrong output would turn the bug into a requirement.
 3. **Write the tests.** Add them to the existing test file for that module, or create a new file next to it that follows the same naming scheme. Write one test per behaviour, and name each test after the behaviour it checks (for example `POST /users returns 400 when email is missing`). Check the status code *and* the body or error shape.
 4. **Run the suite** with the project's test command (e.g. `npm test`). Use Bash only for running tests and lint, never to install packages or change files.
 5. **Iterate on failures.**
