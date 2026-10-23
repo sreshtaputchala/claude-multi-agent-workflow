@@ -1,20 +1,20 @@
 # code-quality
 
-A Claude Code plugin that runs a code-quality workflow on a codebase. A read-only reviewer and a test-writing agent work together under one command, with a review skill and a lint hook alongside them.
+A Claude Code plugin that runs a code-quality workflow on a codebase. A read-only reviewer and a test-writing agent work together under one command, with an endpoint-checklist skill and a lint-on-edit hook alongside them.
 
-> **Status:** scaffold (v0.1.0). The components below are being built. This table will be updated as each one lands.
+> **Status:** v0.1.0. All components are in place; local testing and the marketplace listing are next.
 
 ## Components
 
-| Type     | Location                    | Purpose                                                     |
-| -------- | --------------------------- | ----------------------------------------------------------- |
-| Subagent | `agents/`                   | Read-only code reviewer (Read, Grep, Glob only)              |
-| Subagent | `agents/`                   | Test writer that can add and edit test files                 |
-| Command  | `commands/`                 | Workflow that runs the subagents with parallel and dependent steps |
-| Skill    | `skills/<name>/SKILL.md`    | Code-review conventions the agents and command follow        |
-| Hook     | `hooks/hooks.json`          | Lint check after edits, using `${CLAUDE_PLUGIN_ROOT}` paths  |
+| Type     | Name                 | Location                              | Purpose                                                                 |
+| -------- | -------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| Subagent | `code-reviewer`      | `agents/code-reviewer.md`             | Read-only reviewer (Read, Grep, Glob; sonnet). Reports bugs, convention breaks, and untested behaviour |
+| Subagent | `test-writer`        | `agents/test-writer.md`               | Writes and runs tests (haiku); edits test files only                    |
+| Command  | `audit`              | `commands/audit.md`                   | The workflow: parallel reviews + baseline, then test-writer, then verify |
+| Skill    | `endpoint-checklist` | `skills/endpoint-checklist/SKILL.md`  | Checklist Claude follows when adding or changing an API endpoint        |
+| Hook     | lint-on-edit         | `hooks/hooks.json` → `hooks/lint-on-edit.js` | After every Edit/Write of a `.js` file, runs the project's ESLint on it and sends errors back to Claude |
 
-Once the plugin is installed, every component is namespaced as `code-quality:<name>`. For example, the workflow command runs as `/code-quality:<command>`.
+Once the plugin is installed, every component is namespaced as `code-quality:<name>`. For example, the workflow command runs as `/code-quality:audit [path]`.
 
 ## Layout
 

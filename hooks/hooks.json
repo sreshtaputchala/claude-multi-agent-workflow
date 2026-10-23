@@ -1,0 +1,17 @@
+{
+  "description": "Lint each JavaScript file right after Claude edits or writes it, and feed any ESLint errors back to Claude.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lint-on-edit.js\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
