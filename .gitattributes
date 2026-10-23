@@ -1,0 +1,5 @@
+# Keep plugin files LF so the frontmatter check (which matches "---\n") passes on Windows checkouts too
+*.md   text eol=lf
+*.json text eol=lf
+*.js   text eol=lf
+*.sh   text eol=lf

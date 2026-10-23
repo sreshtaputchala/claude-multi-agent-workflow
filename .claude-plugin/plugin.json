@@ -1,0 +1,11 @@
+{
+  "name": "code-quality",
+  "version": "0.1.0",
+  "description": "A code-quality workflow: a read-only reviewer and a test writer orchestrated by one command, plus a review skill and a lint hook.",
+  "author": {
+    "name": "sreshtaputchala"
+  },
+  "repository": "https://github.com/sreshtaputchala/claude-multi-agent-workflow",
+  "license": "MIT",
+  "keywords": ["code-quality", "review", "testing", "subagents"]
+}
